@@ -10,7 +10,7 @@ const Navbar = () => {
                 <Link href="/dashboard_home">Live Data</Link>
                 <Link href="/heatmap">Interactive Heatmap</Link>
                 <Link href="/maychart">Covid in Singapore</Link>
-                <Link href="/heatmap">About Covid</Link>
+                <Link href="/page">About Covid</Link>
             </div>
         </div>
     );
