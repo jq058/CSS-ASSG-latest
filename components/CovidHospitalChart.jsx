@@ -1,9 +1,17 @@
-//CovidHospitalChart.jsx //May Cherry Aung, S10269732
-
-"use client";  
+"use client";
 
 import { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import { downloadCSV } from "../utils/exportData";
 
 export default function HospitalisationChart() {
   const [data, setData] = useState([]);
@@ -11,10 +19,16 @@ export default function HospitalisationChart() {
   const [selectedData, setSelectedData] = useState("both"); // Default selection to both
   const [availableMonths, setAvailableMonths] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState("");
+  
+  // State for email subscription
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('https://data.gov.sg/api/action/datastore_search?resource_id=d_98e8d8ba612a748413c439550c3c6942');
+      const response = await fetch(
+        "https://data.gov.sg/api/action/datastore_search?resource_id=d_98e8d8ba612a748413c439550c3c6942"
+      );
       const result = await response.json();
 
       const records = result.result.records;
@@ -24,7 +38,10 @@ export default function HospitalisationChart() {
         if (!acc[week]) {
           acc[week] = { epi_week: week, Hospitalised: 0, ICU: 0 };
         }
-        if (curr.new_admisison_type === "Hospitalised" || curr.new_admisison_type === "ICU") {
+        if (
+          curr.new_admisison_type === "Hospitalised" ||
+          curr.new_admisison_type === "ICU"
+        ) {
           acc[week][curr.new_admisison_type] = parseInt(curr.count, 10);
         }
         return acc;
@@ -34,8 +51,8 @@ export default function HospitalisationChart() {
       setData(allData);
       setFilteredData(allData);
 
-      // Extract unique months from the data
-      const months = [...new Set(allData.map(item => item.epi_week.slice(0, 7)))];
+      // Extract unique months from the data based on epi_week (first 7 characters)
+      const months = [...new Set(allData.map((item) => item.epi_week.slice(0, 7)))];
       setAvailableMonths(months);
     };
 
@@ -44,7 +61,7 @@ export default function HospitalisationChart() {
 
   useEffect(() => {
     if (selectedMonth) {
-      const filtered = data.filter(item => item.epi_week.startsWith(selectedMonth));
+      const filtered = data.filter((item) => item.epi_week.startsWith(selectedMonth));
       setFilteredData(filtered);
     } else {
       setFilteredData(data);
@@ -57,6 +74,17 @@ export default function HospitalisationChart() {
 
   const handleMonthChange = (e) => {
     setSelectedMonth(e.target.value);
+  };
+
+  const handleSubscription = () => {
+    if (email) {
+      // Simulate subscription logic
+      setSubscribed(true);
+      alert(`Subscribed with ${email} to receive updates.`);
+      setEmail("");
+    } else {
+      alert("Please enter a valid email address.");
+    }
   };
 
   const getDescription = () => {
@@ -89,100 +117,149 @@ export default function HospitalisationChart() {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">
-        Number of new COVID-19 hospitalisations / ICU admissions by Epi-week
-      </h1>
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <div className="max-w-screen-lg mx-auto bg-white p-6 rounded-lg shadow">
+        <h2 className="text-2xl font-bold mb-6 text-[#2C3E50]">
+          Number of New COVID-19 Hospitalisations / ICU Admissions by Epi-week
+        </h2>
 
-      {/* Dropdown to select Hospitalised, ICU, or Both */}
-      <div className="mb-4">
-        <label htmlFor="hospitalDataSelect" className="block font-medium text-gray-700 mb-2">
-          Select Data to Display:
-        </label>
-        <select
-          id="hospitalDataSelect"
-          className="border border-gray-300 rounded-md p-2 w-full md:w-1/3"
-          value={selectedData}
-          onChange={handleSelectionChange}
-        >
-          <option value="both">All</option>
-          <option value="Hospitalised">Hospitalised</option>
-          <option value="ICU">ICU Admissions</option>
-        </select>
-      </div>
+        {/* Dropdown to select Hospitalised, ICU, or Both */}
+        <div className="mb-4">
+          <label
+            htmlFor="hospitalDataSelect"
+            className="block font-medium text-gray-700 mb-2"
+          >
+            Select Data to Display:
+          </label>
+          <select
+            id="hospitalDataSelect"
+            className="border border-gray-400 rounded-md p-2 w-full md:w-1/3 focus:outline-none focus:ring-2 focus:ring-[#2C3E50]"
+            value={selectedData}
+            onChange={handleSelectionChange}
+          >
+            <option value="both">All</option>
+            <option value="Hospitalised">Hospitalised</option>
+            <option value="ICU">ICU Admissions</option>
+          </select>
+        </div>
 
-      {/* Month-based Filter */}
-      <div className="mb-4">
-        <label htmlFor="monthFilter" className="block font-medium text-gray-700 mb-2">
-          Filter by Month:
-        </label>
-        <select
-          id="monthFilter"
-          className="border border-gray-300 rounded-md p-2 w-full md:w-1/3"
-          value={selectedMonth}
-          onChange={handleMonthChange}
-        >
-          <option value="">All Months</option>
-          {availableMonths.map(month => (
-            <option key={month} value={month}>{month}</option>
-          ))}
-        </select>
-      </div>
+        {/* Month-based Filter */}
+        <div className="mb-4">
+          <label
+            htmlFor="monthFilter"
+            className="block font-medium text-gray-700 mb-2"
+          >
+            Filter by Month:
+          </label>
+          <select
+            id="monthFilter"
+            className="border border-gray-400 rounded-md p-2 w-full md:w-1/3 focus:outline-none focus:ring-2 focus:ring-[#2C3E50]"
+            value={selectedMonth}
+            onChange={handleMonthChange}
+          >
+            <option value="">All Months</option>
+            {availableMonths.map((month) => (
+              <option key={month} value={month}>
+                {month}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <ResponsiveContainer width="100%" height={500}>
-        <BarChart
-          width={500}
-          height={400}
-          data={filteredData}
-          margin={{ top: 20, right: 30, left: 20, bottom: 50 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis
-            dataKey="epi_week"
-            angle={-45}
-            textAnchor="end"
-            interval={0}
-            height={70}
-            tick={{ fill: '#6b7280' }}
-          />
-          <YAxis
-            tick={{ fill: '#6b7280' }}
-            label={{ value: 'Count', angle: -90, position: 'insideLeft', fill: '#6b7280' }}
-          />
-          <Tooltip contentStyle={{ backgroundColor: '#f9fafb', borderColor: '#d1d5db' }} />
-          <Legend verticalAlign="top" align="right" iconType="circle" wrapperStyle={{ paddingBottom: '10px' }} />
-
-          {selectedData === "both" ? (
-            <>
-              <Bar
-                dataKey="Hospitalised"
-                fill="#D18700"
-                name="Hospitalised"
-                barSize={20}
-                radius={[4, 4, 0, 0]}
-              />
-              <Bar
-                dataKey="ICU"
-                fill="#6a0dad"
-                name="ICU Admissions"
-                barSize={20}
-                radius={[4, 4, 0, 0]}
-              />
-            </>
-          ) : (
-            <Bar
-              dataKey={selectedData}
-              fill={selectedData === "Hospitalised" ? "#D18700" : "#6a0dad"}
-              name={selectedData === "Hospitalised" ? "Hospitalised" : "ICU Admissions"}
-              barSize={20}
-              radius={[4, 4, 0, 0]}
+        <ResponsiveContainer width="100%" height={500}>
+          <BarChart
+            width={500}
+            height={400}
+            data={filteredData}
+            margin={{ top: 20, right: 30, left: 20, bottom: 50 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis
+              dataKey="epi_week"
+              angle={-45}
+              textAnchor="end"
+              interval={0}
+              height={70}
+              tick={{ fill: "#6b7280" }}
             />
-          )}
-        </BarChart>
-      </ResponsiveContainer>
-      <p className="text-gray-700 mt-4">
-        {getDescription()}
-      </p>
+            <YAxis
+              tick={{ fill: "#6b7280" }}
+              label={{
+                value: "Count",
+                angle: -90,
+                position: "insideLeft",
+                fill: "#6b7280",
+              }}
+            />
+            <Tooltip contentStyle={{ backgroundColor: "#f9fafb", borderColor: "#d1d5db" }} />
+            <Legend
+              verticalAlign="top"
+              align="right"
+              iconType="circle"
+              wrapperStyle={{ paddingBottom: "10px" }}
+            />
+
+            {selectedData === "both" ? (
+              <>
+                <Bar
+                  dataKey="Hospitalised"
+                  fill="#D18700"
+                  name="Hospitalised"
+                  barSize={20}
+                  radius={[4, 4, 0, 0]}
+                />
+                <Bar
+                  dataKey="ICU"
+                  fill="#6a0dad"
+                  name="ICU Admissions"
+                  barSize={20}
+                  radius={[4, 4, 0, 0]}
+                />
+              </>
+            ) : (
+              <Bar
+                dataKey={selectedData}
+                fill={selectedData === "Hospitalised" ? "#D18700" : "#6a0dad"}
+                name={selectedData === "Hospitalised" ? "Hospitalised" : "ICU Admissions"}
+                barSize={20}
+                radius={[4, 4, 0, 0]}
+              />
+            )}
+          </BarChart>
+        </ResponsiveContainer>
+        <p className="text-gray-800 mt-4 whitespace-pre-line">{getDescription()}</p>
+
+        {/* CSV Download Button */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+          <button
+            onClick={() => downloadCSV(filteredData, "Hospitalisation_Data")}
+            className="bg-[#2C3E50] hover:bg-[#34495E] text-white py-2 px-4 rounded transition-colors duration-300 shadow"
+          >
+            Download CSV
+          </button>
+        </div>
+
+        {/* Email Subscription Section */}
+        <div className="mt-6">
+          <h4 className="text-lg font-semibold text-gray-800">Get Notified of Updates</h4>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center mt-2">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="p-2 border border-gray-400 rounded focus:outline-none focus:ring-2 focus:ring-[#2C3E50] w-full sm:w-auto"
+            />
+            <button
+              onClick={handleSubscription}
+              className="bg-[#2C3E50] hover:bg-[#34495E] text-white py-2 px-4 rounded transition-colors duration-300 shadow mt-2 sm:mt-0 sm:ml-4"
+            >
+              Subscribe
+            </button>
+          </div>
+          {subscribed && <p className="text-green-600 font-semibold mt-2">You are subscribed!</p>}
+        </div>
+      </div>
     </div>
   );
 }

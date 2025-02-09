@@ -9,6 +9,7 @@ import Navbar from '../components/Navbar'; // Import Navbar
 import Footer from '../components/Footer'; // Import Footer
 import '../styles/global.css'; // Global Styles
 import "../styles/styles.css";
+import '../styles/Chart.module.css';
 
 export default function App({ Component, pageProps }) {
     return (
