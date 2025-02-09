@@ -1,4 +1,4 @@
-//May Cherry Aung, S10269732
+//CovidHospitalChart.jsx //May Cherry Aung, S10269732
 
 "use client";  
 
@@ -90,9 +90,9 @@ export default function HospitalisationChart() {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">
+      <h1 className="text-2xl font-bold mb-4">
         Number of new COVID-19 hospitalisations / ICU admissions by Epi-week
-      </h2>
+      </h1>
 
       {/* Dropdown to select Hospitalised, ICU, or Both */}
       <div className="mb-4">

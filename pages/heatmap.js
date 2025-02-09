@@ -1,3 +1,4 @@
+// pages/heatmap.js
 import dynamic from "next/dynamic";
 
 // Disable SSR for Heatmap
