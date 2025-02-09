@@ -1,3 +1,4 @@
+//Student Name: Janice Oh Shi Ting Student Number: S10269334
 "use client";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";

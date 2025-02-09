@@ -1,3 +1,4 @@
+//Student Name: Janice Oh Shi Ting Student Number: S10269334
 import { useState } from 'react';
 
 export default function FAQSection() {

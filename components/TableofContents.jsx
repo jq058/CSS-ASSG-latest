@@ -1,4 +1,5 @@
 "use client";
+//Student Name: Janice Oh Shi Ting Student Number: S10269334
 import PrecautionsCarousel from './PrecautionCarousel';  // import the carousel
 import { ChevronRight } from 'lucide-react';
 import FAQSection from './FAQSection';
@@ -147,11 +148,11 @@ export default function TableOfContentsPage() {
           {variantsData.map((variant, index) => (
             <div key={index} style={{
               position: 'relative',
-              backgroundColor: '#fff',
+              backgroundColor: '#f9f9f9',
               padding: '15px',
-              borderRadius: '10px',
+              borderRadius: '25px',
               border: '1px solid #ddd',
-              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+              boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)',
               width: '30%',
               textAlign: 'center',
               zIndex: 1
@@ -172,7 +173,7 @@ export default function TableOfContentsPage() {
                 left: '0',
                 right: '0',
                 height: '4px',  // Line thickness
-                backgroundColor: 'black',  // Line color
+                backgroundColor: 'grey',  // Line color
                 zIndex: 0  // Send the line behind the labels
                 }}></div>
 
@@ -182,12 +183,12 @@ export default function TableOfContentsPage() {
                 top: '-50px',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                backgroundColor: '#fff',
+                backgroundColor: '#f9f9f9',
                 padding: '2px 8px',
-                borderRadius: '5px',
-                boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+                borderRadius: '10px',
+                boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
                 fontSize: '20px',
-                color: '#555'
+                color: 'black'
               }}>{variant.year}</span>
             </div>
           ))}

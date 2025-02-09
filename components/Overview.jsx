@@ -1,3 +1,4 @@
+//Student Name: Janice Oh Shi Ting Student Number: S10269334
 "use client";
 
 export default function CovidOverviewPage() {
@@ -11,9 +12,9 @@ export default function CovidOverviewPage() {
           <h1 style={{ fontSize: '48px', fontWeight: 'bold', color: '#333', margin: '20px 0' }}>
             What is Covid-19?
           </h1>
-          <p style={{ textAlign: 'left',fontSize: '18px', color: '#666', maxWidth: '600px', margin: '0 auto' }}>
+          <p style={{ textAlign: 'center',fontSize: '18px', color: '#666', maxWidth: '600px', margin: '0 auto' }}>
             Coronavirus disease 2019 (COVID-19) is an infectious disease that was caused by the SARS-CoV-2 virus, which stands for severe acute respiratory syndrome coronavirus 2. 
-            The virus initially emerged in December 2019 in Wuhan,China and quickly spread worldwide in January 2020, resulting in the COVID-19 pandemic. 
+            
 
           </p>
         </header>
@@ -23,7 +24,7 @@ export default function CovidOverviewPage() {
           {/*Left Image*/}
           <div>
             <img 
-              src="/images/map2.png" 
+              src="/healthcare.webp" 
               alt="Global Impact" 
               style={{ borderRadius: '12px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', width: '100%' }}
             />
