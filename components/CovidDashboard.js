@@ -1,3 +1,8 @@
+/*  
+ * Name: Abin Aneesh   
+ * Student ID: S10268036 
+ * Implemented: Live Feedback 
+ */
 import React, { useEffect, useState, useRef } from "react";
 import Chart from "chart.js/auto";
 import StatCard from "./StatCard";
