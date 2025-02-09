@@ -1,0 +1,36 @@
+@import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+html {
+  scroll-behavior: smooth;
+}
+
+.carousel .slide {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: auto !important;         /* Ensure dynamic height */
+  background: none !important;     /* Remove any background that could cause spacing */
+  box-shadow: none !important;
+}
+
+.carousel .slider-wrapper {
+  height: auto !important;         /* Ensure the entire carousel adjusts dynamically */
+}
+
+.carousel .control-arrow, 
+.carousel.carousel-slider .control-arrow {
+  filter: invert(0);               /* Keep arrows visible */
+}
+
+.carousel .thumbs-wrapper {
+  display: none;                   /* Hide thumbnails if not needed */
+}
+
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
