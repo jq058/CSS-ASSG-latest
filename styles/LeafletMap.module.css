@@ -43,3 +43,29 @@
     font-size: 14px;
     margin: 5px 0;
 }
+/* Heatmap.module.css */
+
+.yearFilter {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.yearFilter select {
+    padding: 10px;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.loaderContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.legendContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

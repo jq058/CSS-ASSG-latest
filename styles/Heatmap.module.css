@@ -65,3 +65,16 @@
     margin-top: 20px;
   }
   
+/* === Filter Button === */
+.layerFilter {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+}
+
+.select {
+    width: 100%;
+}
