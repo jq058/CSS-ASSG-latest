@@ -1,6 +1,6 @@
 "use client";
 import CovidOverviewPage from '/components/Overview';
-import TableOfContentsPage from './components/TableofContents';
+import TableOfContentsPage from '/components/TableofContents';
 
 export default function Home() {
   return (
