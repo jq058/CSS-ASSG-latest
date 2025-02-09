@@ -1,9 +1,12 @@
-// components/CovidLineChart.jsx
+//Student Name: May Cherry Aung Student Number: S10269732
 
 "use client";
 
+// Importing the function to download CSV files
 import { downloadCSV } from "../utils/exportData";
+// Importing hooks for state management and lifecycle methods
 import { useEffect, useState } from "react";
+// Importing necessary components from recharts for building the line chart
 import {
   LineChart,
   Line,
@@ -14,10 +17,13 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+// Importing the API call function to fetch vaccination data
 import { fetchVaccinationData } from "../utils/api";
+// Importing date formatting function
 import { format } from "date-fns";
 
 export default function VaccinationLineChart() {
+  // State variables to store fetched data and user selections
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [selectedOption, setSelectedOption] = useState("all");
@@ -26,12 +32,14 @@ export default function VaccinationLineChart() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
+  // Fetch vaccination data when component mounts
   useEffect(() => {
     const getData = async () => {
       const vaccinationData = await fetchVaccinationData();
       if (vaccinationData) {
         setData(vaccinationData);
         setFilteredData(vaccinationData);
+        // Extract unique months from the data for filtering
         const months = [
           ...new Set(
             vaccinationData.map((item) =>
@@ -46,6 +54,7 @@ export default function VaccinationLineChart() {
     getData();
   }, []);
 
+  // Filter data based on selected month
   useEffect(() => {
     if (selectedMonth) {
       const filtered = data.filter(
@@ -57,17 +66,18 @@ export default function VaccinationLineChart() {
     }
   }, [selectedMonth, data]);
 
+  // Handle subscription logic when user submits email
   const handleSubscription = () => {
     if (email) {
-      // Simulate subscription logic
       setSubscribed(true);
       alert(`Subscribed with ${email} to receive updates.`);
-      setEmail("");
+      setEmail(""); // Clear the email input
     } else {
       alert("Please enter a valid email address.");
     }
   };
 
+  // Get description based on selected data option
   const getDescription = () => {
     if (selectedOption === "all") {
       return "This graph displays the progress of COVID-19 vaccination in Singapore, showing three metrics: the number of individuals who have received at least one dose, those who have completed the full regimen, and those who have achieved minimum protection. This comprehensive view helps to compare different stages of the vaccination rollout over time.";
@@ -80,13 +90,13 @@ export default function VaccinationLineChart() {
     }
   };
 
-
   return (
     <div className="p-4">
       <div className="max-w-screen-lg mx-auto">
         <h1 className="text-xl font-bold mb-4">
           Progress of COVID-19 vaccination in Singapore
         </h1>
+        {/* Dropdown for selecting data type to display */}
         <div className="mb-4">
           <label htmlFor="line-select" className="mr-2">
             Select data to display:
@@ -103,6 +113,7 @@ export default function VaccinationLineChart() {
             <option value="minimumProtection">Minimum Protection</option>
           </select>
         </div>
+        {/* Dropdown for filtering data by month */}
         <div className="mb-4">
           <label htmlFor="month-filter" className="mr-2">
             Filter by Month:
@@ -121,6 +132,7 @@ export default function VaccinationLineChart() {
             ))}
           </select>
         </div>
+        {/* Chart container for responsive design */}
         <ResponsiveContainer width="100%" height={450}>
           <LineChart
             data={filteredData}
@@ -138,6 +150,7 @@ export default function VaccinationLineChart() {
               }
             />
             <Legend />
+            {/* Display lines based on selected option */}
             {(selectedOption === "all" || selectedOption === "atLeastOne") && (
               <Line
                 type="monotone"
@@ -170,23 +183,18 @@ export default function VaccinationLineChart() {
             )}
           </LineChart>
         </ResponsiveContainer>
+        {/* Description of the displayed data */}
         <p className="text-gray-700 mt-4">{getDescription()}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+          {/* Button to download data as CSV */}
           <button
             onClick={() => downloadCSV(filteredData, "Vaccination_Data")}
             className="btn bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
           >
             Download CSV
           </button>
-          {/* <a
-            href="https://vaccine.gov.sg/covid"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded text-center"
-          >
-            Book COVID-19 Vaccination Appointment
-          </a> */}
         </div>
+        {/* Subscription section for updates */}
         <div className="mt-4">
           <h4 className="text-lg font-semibold">Get Notified of Updates</h4>
           <input
@@ -202,9 +210,10 @@ export default function VaccinationLineChart() {
           >
             Subscribe
           </button>
+          {/* Display confirmation message if subscribed */}
           {subscribed && <p className="text-green-600 mt-2">You are subscribed!</p>}
         </div>
       </div>
     </div>
   );
-} 
+}
