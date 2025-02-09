@@ -1,8 +1,9 @@
 /*  
  * Name: Lau Jia Qi   
  * Student ID: S10267822A 
- * Implemented: design and colours for heatmap page
- */
+ * Implemented: Design and colors for heatmap page
+ */
+
 /* === General Layout === */
 .container {
     display: flex;
@@ -10,19 +11,30 @@
     align-items: center;
     justify-content: center;
     margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* === Title Styling === */
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333; /* Dark grey for readability */
+    margin-bottom: 20px;
 }
 
 /* === Loading Spinner === */
 .loaderContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     height: 100vh; /* Full viewport height */
     text-align: center;
-    background-color: #f4f6f9;
+    background-color: #f4f6f9; /* Light background for better visibility */
 }
 
+/* Loading text style */
 .loaderContainer p {
     font-size: 18px;
     margin-top: 20px;
@@ -30,57 +42,68 @@
     font-weight: bold;
 }
 
+/* === Error Message === */
 .error {
     color: red;
     font-size: 20px;
     text-align: center;
-}
-
-.container {
-    padding: 20px;
-    text-align: center;
-}
-
-.title {
-    font-size: 28px;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
 }
-/* Adjust map container for better display */
 
 /* === Map Container === */
-/* Heatmap.module.css */
+.mapContainer {
+    width: 100%;
+    height: 500px; /* Fixed height for map */
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
 
-/* Loader Styles */
-/* Heatmap.module.css */
-
-/* Loader Styles */
-.loaderContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  /* Legend Container Styles */
-  .legendContainer {
+/* === Legend Container === */
+.legendContainer {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-  }
-  
-/* === Filter Button === */
+    padding: 10px;
+}
+
+/* === Filter Button Styling === */
 .layerFilter {
     margin: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 300px;
+    max-width: 300px; /* Restrict width for better alignment */
 }
 
+/* Select dropdown styling */
 .select {
     width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Hover effect for dropdown */
+.select:hover {
+    border-color: #007bff; /* Highlight on hover */
+}
+
+/* === Responsive Design Enhancements === */
+@media (max-width: 768px) {
+    .mapContainer {
+        height: 400px; /* Reduce map height for smaller screens */
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .select {
+        font-size: 14px;
+        padding: 8px;
+    }
 }

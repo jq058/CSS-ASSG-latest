@@ -1,26 +1,40 @@
 /*  
  * Name: Lau Jia Qi   
  * Student ID: S10267822A 
- * Implemented: design and colour for footer   
- */
-/* Footer styling */
+ * Implemented: Design and color for footer
+ */
+
+/* === Footer Styling === */
 .footer {
-    background-color: #34495e; /* Darker tone for footer */
+    background-color: #34495e; /* Dark blue/grey for a modern look */
     padding: 20px 30px;
-    color: #fff; /* White text */
+    color: #fff; /* White text for contrast */
     text-align: center;
     font-size: 14px;
+    width: 100%;
 }
 
+/* === Footer Links === */
 .footer a {
     color: #1abc9c; /* Light turquoise links */
     text-decoration: none;
+    transition: color 0.3s ease-in-out;
 }
 
+/* Hover effect for links */
 .footer a:hover {
-    color: #16a085; /* Darker turquoise on hover */
+    color: #16a085; /* Darker turquoise for hover effect */
 }
 
+/* Footer paragraph spacing */
 .footer p {
     margin-top: 10px;
+}
+
+/* === Responsive Design Enhancements === */
+@media (max-width: 768px) {
+    .footer {
+        padding: 15px 20px; /* Reduce padding for smaller screens */
+        font-size: 13px; /* Slightly smaller font */
+    }
 }

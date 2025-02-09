@@ -1,35 +1,59 @@
 /*  
  * Name: Lau Jia Qi   
  * Student ID: S10267822A 
- * Implemented: design and colour for legend 
- */
+ * Implemented: Design and color for legend
+ */
+
+/* === Legend Container === */
 .legendContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #f9f9f9;
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    flex-direction: column; /* Stack items vertically */
+    
+    background-color: #f9f9f9; /* Light grey background for contrast */
     padding: 15px;
     margin-top: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Rounded edges for a smoother look */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     width: 100%;
 }
 
+/* === Legend Items === */
 .legendItem {
-    display: flex;
-    align-items: center;
+    display: flex; /* Align text and color box in a row */
+    align-items: center; /* Center align items */
     margin-bottom: 5px;
 }
 
+/* === Color Box Indicator === */
 .colorBox {
     width: 30px;
     height: 30px;
-    border-radius: 50%;
+    border-radius: 50%; /* Make it circular */
     margin-right: 10px;
 }
 
+/* === Legend Text === */
 .legendContainer span {
     font-size: 14px;
     font-weight: 500;
+    color: #333; /* Dark grey for readability */
+}
+
+/* === Responsive Design Enhancements === */
+@media (max-width: 768px) {
+    .legendContainer {
+        padding: 12px;
+        width: 90%;
+    }
+
+    .colorBox {
+        width: 25px;
+        height: 25px;
+    }
+
+    .legendContainer span {
+        font-size: 13px;
+    }
 }

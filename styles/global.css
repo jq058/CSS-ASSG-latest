@@ -1,128 +1,163 @@
 /*  
  * Name: Lau Jia Qi   
  * Student ID: S10267822A 
- * Implemented: design and colour for general components in the website 
- */
+ * Implemented: Design and color for general components in the website
+ */
+
+/* === Global CSS Variables === */
 :root {
-    /* Primary Colors */
-    --primary-blue: #1E3A8A;
-    --primary-red: #D72638;
-    --primary-teal: #2A9D8F;
-  
-    /* Secondary Colors */
-    --secondary-gray: #E5E7EB;
-    --secondary-white: #F9FAFB;
-    --secondary-orange: #F4A261;
-  
-    /* Accent Colors */
-    --accent-green: #52B788;
-    --accent-yellow: #F4D35E;
-    --dark-gray: #374151;
-  
-    /* Typography */
-    --font-color: var(--dark-gray);
-    --background-light: var(--secondary-white);
-    --background-dark: var(--primary-blue);
-  }
-  
-  /* Global Styles */
-  body {
-    background-color: var(--background-light);
-    color: var(--font-color);
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Navbar */
-  .navbar {
-    background-color: var(--primary-blue);
-    color: var(--secondary-white);
-    padding: 15px 20px;
-  }
-  
-  /* Buttons */
-  .button-primary {
-    background-color: var(--primary-teal);
-    color: var(--secondary-white);
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .button-primary:hover {
-    background-color: var(--primary-blue);
-  }
-  
-  /* Cards */
-  .card {
-    background-color: var(--secondary-gray);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Charts */
-  .chart-container {
-    background-color: var(--secondary-white);
-    border: 1px solid var(--secondary-gray);
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  /* Alerts */
-  .alert {
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-  }
-  
-  .alert-danger {
-    background-color: var(--primary-red);
-    color: var(--secondary-white);
-  }
-  
-  .alert-warning {
-    background-color: var(--secondary-orange);
-    color: var(--dark-gray);
-  }
-  
-  .alert-success {
-    background-color: var(--accent-green);
-    color: var(--secondary-white);
-  }
-  
-/* global.css */
+  /* Primary Colors */
+  --primary-blue: #1E3A8A;
+  --primary-red: #D72638;
+  --primary-teal: #2A9D8F;
 
+  /* Secondary Colors */
+  --secondary-gray: #E5E7EB;
+  --secondary-white: #F9FAFB;
+  --secondary-orange: #F4A261;
+
+  /* Accent Colors */
+  --accent-green: #52B788;
+  --accent-yellow: #F4D35E;
+  --dark-gray: #374151;
+
+  /* Typography */
+  --font-color: var(--dark-gray);
+  --background-light: var(--secondary-white);
+  --background-dark: var(--primary-blue);
+}
+
+/* === Global Styles === */
+body {
+  background-color: var(--background-light);
+  color: var(--font-color);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Navbar === */
+.navbar {
+  background-color: var(--primary-blue);
+  color: var(--secondary-white);
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* === Buttons === */
+.button-primary {
+  background-color: var(--primary-teal);
+  color: var(--secondary-white);
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Button hover effect */
+.button-primary:hover {
+  background-color: var(--primary-blue);
+}
+
+/* === Card Components === */
+.card {
+  background-color: var(--secondary-gray);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* === Charts Styling === */
+.chart-container {
+  background-color: var(--secondary-white);
+  border: 1px solid var(--secondary-gray);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* === Alerts === */
+.alert {
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Alert Variations */
+.alert-danger {
+  background-color: var(--primary-red);
+  color: var(--secondary-white);
+}
+
+.alert-warning {
+  background-color: var(--secondary-orange);
+  color: var(--dark-gray);
+}
+
+.alert-success {
+  background-color: var(--accent-green);
+  color: var(--secondary-white);
+}
+
+/* === Loader Styling === */
 .loaderContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    background-color: #f4f6f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f4f6f9;
 }
 
+/* Loader Text */
 .loaderContainer p {
-    font-size: 18px;
-    margin-top: 20px;
-    color: #555;
+  font-size: 18px;
+  margin-top: 20px;
+  color: #555;
 }
 
+/* === Error Message === */
 .error {
-    color: red;
-    font-size: 20px;
-    text-align: center;
+  color: red;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
 }
 
+/* === General Container === */
 .container {
-    padding: 20px;
-    text-align: center;
+  padding: 20px;
+  text-align: center;
 }
 
+/* === Title Styling === */
 .title {
-    font-size: 2rem;
-    margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: var(--font-color);
+}
+
+/* === Responsive Design Enhancements === */
+@media (max-width: 768px) {
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .button-primary {
+      padding: 8px 12px;
+      font-size: 14px;
+  }
+
+  .card {
+      padding: 15px;
+  }
+
+  .title {
+      font-size: 1.75rem;
+  }
 }

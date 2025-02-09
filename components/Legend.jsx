@@ -1,34 +1,30 @@
 /*  
  * Name: Lau Jia Qi   
  * Student ID: S10267822A 
- * Implemented: Full development of the Legend, including layout, design, and functionality.  
- */
-import styles from "../styles/Legend.module.css"; // Assuming you have a separate CSS file for the Legend
+ * Implemented: Full development of the Legend, including layout, design, and functionality.
+ */
+
+import styles from "../styles/Legend.module.css"; // Import the Legend styles
 
 const Legend = () => {
+    // Define color mappings and labels for different COVID-19 case levels
+    const legendItems = [
+        { color: "green", label: "Less than 5,000 Cases" },
+        { color: "yellow", label: "5,000 – 50,000 Cases" },
+        { color: "orange", label: "50,000 – 1,000,000 Cases" },
+        { color: "red", label: "1,000,000+ Cases" },
+        { color: "gray", label: "No Data" },
+    ];
+
     return (
         <div className={styles.legendContainer}>
             <p><b>COVID-19 Cases by Country</b></p>
-            <div className={styles.legendItem}>
-                <div className={styles.colorBox} style={{ backgroundColor: 'green' }}></div>
-                <span> less than 5000 Cases</span>
-            </div>
-            <div className={styles.legendItem}>
-                <div className={styles.colorBox} style={{ backgroundColor: 'yellow' }}></div>
-                <span>5000–50000 Cases</span>
-            </div>
-            <div className={styles.legendItem}>
-                <div className={styles.colorBox} style={{ backgroundColor: 'orange' }}></div>
-                <span>50000–1000000 Cases</span>
-            </div>
-            <div className={styles.legendItem}>
-                <div className={styles.colorBox} style={{ backgroundColor: 'red' }}></div>
-                <span>1000000+ Cases</span>
-            </div>
-            <div className={styles.legendItem}>
-                <div className={styles.colorBox} style={{ backgroundColor: 'gray' }}></div>
-                <span>No Data</span>
-            </div>
+            {legendItems.map((item, index) => (
+                <div key={index} className={styles.legendItem}>
+                    <div className={styles.colorBox} style={{ backgroundColor: item.color }}></div>
+                    <span>{item.label}</span>
+                </div>
+            ))}
         </div>
     );
 };

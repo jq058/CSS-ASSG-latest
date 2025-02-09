@@ -1,93 +1,113 @@
 /*  
  * Name: Lau Jia Qi   
  * Student ID: S10267822A 
- * Implemented: design and colour for home page
- */
+ * Implemented: Design and color for the home page
+ */
+
 /* === General Page Styles === */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-image: url("https://ysm-res.cloudinary.com/image/upload/c_limit,f_auto,h_810,q_auto,w_1440/v1/yms/prod/5e80942d-d5b7-43cb-9ec8-aad53f6d2f73");
-    background-size: cover; /* Cover the entire container */
-    background-position: center; /* Center the image */
-    text-align: center;
-    color: white; /* Set text color to white for visibility */
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Arrange items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  height: 100vh; /* Full viewport height */
+  
+  /* Background styling */
+  background-image: url("https://ysm-res.cloudinary.com/image/upload/c_limit,f_auto,h_810,q_auto,w_1440/v1/yms/prod/5e80942d-d5b7-43cb-9ec8-aad53f6d2f73");
+  background-size: cover; /* Cover entire container */
+  background-position: center; /* Center image */
+
+  text-align: center; /* Align text centrally */
+  color: white; /* Ensure text visibility */
 }
 
+/* === Typography === */
 .title {
-    font-size: 36px;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #fff; /* Explicit white color */
+  margin-bottom: 20px;
 }
 
 .description {
-    font-size: 18px;
-    color: #fff;
-    margin-bottom: 40px;
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 40px;
 }
 
-/* === Button Styling === */
+/* === Navigation and Buttons === */
 .navContainer {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .button {
-    padding: 15px 30px;
-    background-color: #007bff;
-    color: white;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  padding: 15px 30px;
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out; /* Smooth transition */
 }
 
+/* Button hover effect */
 .button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
+/* === Media Section (Slider) === */
+.sliderContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.slider {
+  width: 80%;
+  margin: 10px 0;
+}
 
-.container {
-    text-align: center;
-    padding: 20px;
+/* Time display styling */
+.timeDisplay {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+/* === Media Controls === */
+.controls {
+  margin-top: 20px;
+}
+
+/* Play button styling */
+.playButton {
+  background-color: #3498db; /* Light blue */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Play button hover effect */
+.playButton:hover {
+  background-color: #2980b9; /* Darker blue */
+}
+
+/* === Responsive Design Enhancements === */
+@media (max-width: 768px) {
+  .title {
+      font-size: 28px;
   }
-  
-  .sliderContainer {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+  .description {
+      font-size: 16px;
   }
-  
-  .slider {
-    width: 80%;
-    margin: 10px 0;
+
+  .button {
+      padding: 12px 25px;
+      font-size: 16px;
   }
-  
-  .timeDisplay {
-    font-size: 16px;
-    margin-top: 5px;
-  }
-  
-  .controls {
-    margin-top: 20px;
-  }
-  
-  .playButton {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .playButton:hover {
-    background-color: #2980b9;
-  }
-  
+}
