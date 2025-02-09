@@ -1,8 +1,8 @@
 /*styles/Chart.module.css*/
 
 .container {
-  /* Add padding only to the left and right sides */
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 40px;
+  padding-right: 40px;
   padding-top: 15px;
+  background-color: var(--background-color);
 }

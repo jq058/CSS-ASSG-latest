@@ -1,43 +1,52 @@
 /*  
  * Name: Lau Jia Qi   
  * Student ID: S10267822A 
- * Implemented: Full development of the filter button, including layout, design, and functionality.  
- */
+ * Implemented: Full development of the filter button, including layout, design, and functionality.
+ */
+
 import React, { useState } from 'react';
-import { Button, Menu, MenuItem } from '@mui/material'; // Importing Material UI components
+import { Button, Menu, MenuItem } from '@mui/material'; // Import Material UI components
 
 const FilterButton = ({ onFilterChange }) => {
-  const [filter, setFilter] = useState("totalCases"); // Default filter
-  const [anchorEl, setAnchorEl] = useState(null); // For dropdown menu positioning
+  // State for currently selected filter
+  const [filter, setFilter] = useState("totalCases"); 
 
+  // State for managing dropdown menu positioning
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  // Handle button click to open the dropdown
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget); // Open the menu when button is clicked
+    setAnchorEl(event.currentTarget);
   };
 
+  // Handle closing of the dropdown menu
   const handleClose = () => {
-    setAnchorEl(null); // Close the menu when an option is clicked
+    setAnchorEl(null);
   };
 
+  // Handle selection of a new filter option
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
-    onFilterChange(newFilter); // Pass selected filter to parent (Heatmap)
-    handleClose(); // Close the dropdown after selecting the filter
+    onFilterChange(newFilter); // Pass selected filter to parent component (Heatmap)
+    handleClose(); // Close the dropdown menu after selection
   };
 
   return (
     <div>
+      {/* Filter selection button */}
       <Button
-        aria-controls="simple-menu"
+        aria-controls="filter-menu"
         aria-haspopup="true"
         onClick={handleClick}
         variant="contained"
         color="primary"
       >
-        Select Filter
+        {`Filter: ${filter.replace(/([A-Z])/g, ' $1')}`} {/* Formatting camelCase to readable text */}
       </Button>
 
+      {/* Dropdown menu for selecting a filter */}
       <Menu
-        id="simple-menu"
+        id="filter-menu"
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}

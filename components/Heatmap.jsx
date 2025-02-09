@@ -1,18 +1,19 @@
 /*  
  * Name: Lau Jia Qi  
  * Student ID: S10267822A
- * Implemented: Full development of the page, including layout, design, and functionality.  
- */
+ * Implemented: Full development of the page, including layout, design, and functionality.
+ */
+
 import { useEffect, useState, memo } from "react";
 import dynamic from "next/dynamic";
-import { ClockLoader } from "react-spinners"; // Import ClockLoader
+import { ClockLoader } from "react-spinners"; // Import ClockLoader for loading state
 import styles from "../styles/Heatmap.module.css";
 import Legend from './Legend'; // Import the Legend component
 
 // MUI components
-import { Select, MenuItem, FormControl, InputLabel } from "@mui/material"; // Import MUI Select and MenuItem
+import { Select, MenuItem, FormControl, InputLabel } from "@mui/material"; 
 
-// Dynamically import LeafletMap to disable SSR
+// Dynamically import LeafletMap to disable SSR (Server-Side Rendering)
 const LeafletMap = dynamic(() => import("../components/LeafletMap"), { ssr: false });
 
 const Heatmap = () => {
@@ -20,58 +21,70 @@ const Heatmap = () => {
     const [filteredData, setFilteredData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-    const [selectedLayer, setSelectedLayer] = useState("total"); // Default to 'total'
+    const [selectedLayer, setSelectedLayer] = useState("total"); // Default filter: Total Cases
 
+    // Fetch COVID-19 data from API on component mount
     useEffect(() => {
-        async function fetchData() {
+        const fetchData = async () => {
             setLoading(true);
             try {
                 const data = await getCovidData();
                 console.log("Fetched Data: ", data);
+                
                 if (data.length === 0) {
                     setError(true);
                 } else {
                     setCovidData(data);
-                    setFilteredData(data); // Initially set the full data
+                    setFilteredData(data); // Initially display full dataset
                 }
             } catch (err) {
                 setError(true);
                 console.error("Error fetching data:", err.message);
             }
             setLoading(false);
-        }
+        };
+
         fetchData();
     }, []);
 
+    // Update filtered data whenever selected layer changes
     useEffect(() => {
-        // Filter the data based on selected data layer (Total, Active, Deaths)
-        setFilteredData(covidData.map(country => ({
-            ...country,
-            value: country[selectedLayer], // Select the correct value based on the selected layer
-        })));
+        setFilteredData(
+            covidData.map((country) => ({
+                ...country,
+                value: country[selectedLayer], // Dynamically select the correct data field
+            }))
+        );
     }, [selectedLayer, covidData]);
 
-    async function getCovidData() {
+    // Fetch COVID-19 country-level data from API
+    const getCovidData = async () => {
         const url = "https://disease.sh/v3/covid-19/countries";
-        const response = await fetch(url);
-        const data = await response.json();
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
 
-        return data.map((country) => ({
-            Country: country.country,
-            TotalConfirmed: country.cases,
-            ActiveCases: country.active,
-            Deaths: country.deaths,
-            lat: country.countryInfo.lat,
-            lon: country.countryInfo.long,
-            CasesByYear: country.timeline ? country.timeline.cases : {}, // Adding historical data
-        }));
-    }
+            return data.map((country) => ({
+                Country: country.country,
+                TotalConfirmed: country.cases,
+                ActiveCases: country.active,
+                Deaths: country.deaths,
+                lat: country.countryInfo.lat,
+                lon: country.countryInfo.long,
+                CasesByYear: country.timeline ? country.timeline.cases : {}, // Adding historical data
+            }));
+        } catch (error) {
+            console.error("Error fetching COVID data:", error);
+            return [];
+        }
+    };
 
-    // Layer toggle handler
+    // Handle selection change in filter dropdown
     const handleLayerChange = (event) => {
         setSelectedLayer(event.target.value);
     };
 
+    // Show loading state while fetching data
     if (loading) {
         return (
             <div className={styles.loaderContainer}>
@@ -81,13 +94,16 @@ const Heatmap = () => {
         );
     }
 
-    if (error) return <h2 className={styles.error}>Error fetching data. Please try again later.</h2>;
+    // Show error message if data fetch fails
+    if (error) {
+        return <h2 className={styles.error}>Error fetching data. Please try again later.</h2>;
+    }
 
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>COVID-19 Interactive Heatmap</h1>
             
-            {/* Data Layer Filter Dropdown (using MUI) */}
+            {/* Data Layer Filter Dropdown (MUI Select) */}
             <div className={styles.layerFilter}>
                 <FormControl variant="outlined">
                     <InputLabel>Filter by</InputLabel>
@@ -107,10 +123,15 @@ const Heatmap = () => {
             {/* Render the map with filtered data */}
             <LeafletMap data={filteredData} selectedLayer={selectedLayer} />
             
-            {/* Only render the Legend once the map has loaded */}
-            {!loading && <div className={styles.legendContainer}><Legend /></div>}
+            {/* Show Legend once map is loaded */}
+            {!loading && (
+                <div className={styles.legendContainer}>
+                    <Legend />
+                </div>
+            )}
         </div>
     );
 };
 
+// Memoize component for performance optimization
 export default memo(Heatmap);

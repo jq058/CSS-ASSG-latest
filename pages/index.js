@@ -15,7 +15,7 @@ export default function Home() {
             {/* Navigate to Heatmap */}
             <div className={styles.navContainer}>
                 <Link href="/heatmap">
-                    <button className={styles.button}>Go to Heatmap</button>
+                    <button className={styles.button}>Find out more</button>
                 </Link>
             </div>
         </div>
