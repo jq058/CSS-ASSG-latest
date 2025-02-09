@@ -28,7 +28,7 @@ export default function FAQSection() {
             cursor: 'pointer', 
             display: 'flex', 
             justifyContent: 'space-between', 
-            alignItems: 'center'
+            alignItems: 'stretch'
           }}
         >
           Are the Covid-19 vaccines safe and effective?
@@ -58,7 +58,7 @@ export default function FAQSection() {
             cursor: 'pointer', 
             display: 'flex', 
             justifyContent: 'space-between', 
-            alignItems: 'center'
+            alignItems: 'stretch'
           }}
         >
           How severe is Covid-19 infection?
@@ -87,7 +87,7 @@ export default function FAQSection() {
             cursor: 'pointer', 
             display: 'flex', 
             justifyContent: 'space-between', 
-            alignItems: 'center'
+            alignItems: 'stretch'
           }}
         >
           When is a person infectious?
