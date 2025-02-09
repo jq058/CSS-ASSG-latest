@@ -1,0 +1,123 @@
+:root {
+    /* Primary Colors */
+    --primary-blue: #1E3A8A;
+    --primary-red: #D72638;
+    --primary-teal: #2A9D8F;
+  
+    /* Secondary Colors */
+    --secondary-gray: #E5E7EB;
+    --secondary-white: #F9FAFB;
+    --secondary-orange: #F4A261;
+  
+    /* Accent Colors */
+    --accent-green: #52B788;
+    --accent-yellow: #F4D35E;
+    --dark-gray: #374151;
+  
+    /* Typography */
+    --font-color: var(--dark-gray);
+    --background-light: var(--secondary-white);
+    --background-dark: var(--primary-blue);
+  }
+  
+  /* Global Styles */
+  body {
+    background-color: var(--background-light);
+    color: var(--font-color);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: var(--primary-blue);
+    color: var(--secondary-white);
+    padding: 15px 20px;
+  }
+  
+  /* Buttons */
+  .button-primary {
+    background-color: var(--primary-teal);
+    color: var(--secondary-white);
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .button-primary:hover {
+    background-color: var(--primary-blue);
+  }
+  
+  /* Cards */
+  .card {
+    background-color: var(--secondary-gray);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Charts */
+  .chart-container {
+    background-color: var(--secondary-white);
+    border: 1px solid var(--secondary-gray);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Alerts */
+  .alert {
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .alert-danger {
+    background-color: var(--primary-red);
+    color: var(--secondary-white);
+  }
+  
+  .alert-warning {
+    background-color: var(--secondary-orange);
+    color: var(--dark-gray);
+  }
+  
+  .alert-success {
+    background-color: var(--accent-green);
+    color: var(--secondary-white);
+  }
+  
+/* global.css */
+
+.loaderContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #f4f6f9;
+}
+
+.loaderContainer p {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #555;
+}
+
+.error {
+    color: red;
+    font-size: 20px;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
