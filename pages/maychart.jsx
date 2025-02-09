@@ -1,10 +1,11 @@
-//May Cherry Aung, S10269732
+// pages/chart.jsx // May Cherry Aung, S10269732
 import CovidLineChart from "../components/CovidLineChart";
 import CovidHospitalChart from "../components/CovidHospitalChart";
+import styles from "../styles/Chart.module.css";
 
 export default function HomePage() {
   return (
-    <main className="p-6 space-y-12">
+    <main className={`p-6 space-y-12 ${styles.container}`}>
       {/* Wrapper to control max width and center content */}
       <div className="max-w-screen-lg mx-auto px-4">
         
@@ -25,7 +26,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
       </div>
     </main>
   );

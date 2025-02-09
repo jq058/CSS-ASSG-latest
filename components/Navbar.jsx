@@ -7,9 +7,9 @@ const Navbar = () => {
             <Link href="/">Covid</Link>
             <div>
                 <Link href="/">Home</Link>
-                <Link href="/live-data">Live Data</Link>
+                <Link href="/dashboard_home">Live Data</Link>
                 <Link href="/heatmap">Interactive Heatmap</Link>
-                <Link href="/chart">Covid in Singapore</Link>
+                <Link href="/maychart">Covid in Singapore</Link>
                 <Link href="/heatmap">About Covid</Link>
             </div>
         </div>
