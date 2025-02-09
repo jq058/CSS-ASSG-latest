@@ -1,4 +1,9 @@
 // pages/_app.js
+/*  
+ * Name: Lau Jia Qi   
+ * Student ID: S10267822A 
+ * Implemented: Full development of the page  
+ */
 
 import Navbar from '../components/Navbar'; // Import Navbar
 import Footer from '../components/Footer'; // Import Footer

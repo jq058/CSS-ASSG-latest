@@ -1,3 +1,8 @@
+/*  
+ * Name: Lau Jia Qi   
+ * Student ID: S10267822A 
+ * Implemented: Full development of the Legend, including layout, design, and functionality.  
+ */
 import styles from "../styles/Legend.module.css"; // Assuming you have a separate CSS file for the Legend
 
 const Legend = () => {

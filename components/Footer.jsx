@@ -1,3 +1,8 @@
+/*  
+ * Name: Lau Jia Qi   
+ * Student ID: S10267822A 
+ * Implemented: Full development of the footer, including layout, design, and functionality.  
+ */
 // components/Footer.jsx
 import styles from '../styles/Footer.module.css'; // Import Footer styles
 
