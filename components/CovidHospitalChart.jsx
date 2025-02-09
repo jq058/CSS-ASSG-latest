@@ -1,6 +1,10 @@
+//Student Name: May Cherry Aung Student Number: S10269732
+
 "use client";
 
+// Importing hooks for state management and lifecycle methods
 import { useEffect, useState } from "react";
+// Importing necessary components from recharts for building the bar chart
 import {
   BarChart,
   Bar,
@@ -11,19 +15,22 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+// Importing the function to download CSV files
 import { downloadCSV } from "../utils/exportData";
 
 export default function HospitalisationChart() {
+  // State variables to store fetched data and user selections
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [selectedData, setSelectedData] = useState("both"); // Default selection to both
+  const [selectedData, setSelectedData] = useState("both"); // Default selection to show both Hospitalised and ICU data
   const [availableMonths, setAvailableMonths] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState("");
-  
-  // State for email subscription
+
+  // State for managing email subscriptions
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
+  // Fetch data when the component mounts
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
@@ -33,11 +40,13 @@ export default function HospitalisationChart() {
 
       const records = result.result.records;
 
+      // Format data to group by epidemiological week (epi_week)
       const formattedData = records.reduce((acc, curr) => {
         const week = curr.epi_week;
         if (!acc[week]) {
           acc[week] = { epi_week: week, Hospitalised: 0, ICU: 0 };
         }
+        // Add counts to corresponding categories
         if (
           curr.new_admisison_type === "Hospitalised" ||
           curr.new_admisison_type === "ICU"
@@ -51,7 +60,7 @@ export default function HospitalisationChart() {
       setData(allData);
       setFilteredData(allData);
 
-      // Extract unique months from the data based on epi_week (first 7 characters)
+      // Extract unique months from the epi_week data for filtering
       const months = [...new Set(allData.map((item) => item.epi_week.slice(0, 7)))];
       setAvailableMonths(months);
     };
@@ -59,39 +68,43 @@ export default function HospitalisationChart() {
     fetchData();
   }, []);
 
+  // Filter data based on selected month and show every second week
   useEffect(() => {
     let filtered = data;
 
-    // Apply month filtering if a month is selected
+    // Apply month filtering if a specific month is selected
     if (selectedMonth) {
       filtered = filtered.filter((item) => item.epi_week.startsWith(selectedMonth));
     }
 
-    // Filter to include only every second week
+    // Only include every second week's data
     const everySecondWeek = filtered.filter((_, index) => index % 2 === 0);
 
     setFilteredData(everySecondWeek);
   }, [selectedMonth, data]);
 
+  // Handle changes in data selection (Hospitalised, ICU, or both)
   const handleSelectionChange = (e) => {
     setSelectedData(e.target.value);
   };
 
+  // Handle changes in month selection
   const handleMonthChange = (e) => {
     setSelectedMonth(e.target.value);
   };
 
+  // Handle subscription logic when user submits email
   const handleSubscription = () => {
     if (email) {
-      // Simulate subscription logic
       setSubscribed(true);
       alert(`Subscribed with ${email} to receive updates.`);
-      setEmail("");
+      setEmail(""); // Clear the email input
     } else {
       alert("Please enter a valid email address.");
     }
   };
 
+  // Provide description based on selected data option
   const getDescription = () => {
     if (selectedData === "ICU") {
       return (
@@ -147,7 +160,7 @@ export default function HospitalisationChart() {
         </select>
       </div>
 
-      {/* Month-based Filter */}
+      {/* Dropdown for filtering data by month */}
       <div className="mb-4">
         <label
           htmlFor="monthFilter"
@@ -170,6 +183,7 @@ export default function HospitalisationChart() {
         </select>
       </div>
 
+      {/* Chart container for responsive design */}
       <ResponsiveContainer width="100%" height={500}>
         <BarChart
           width={500}
@@ -203,6 +217,7 @@ export default function HospitalisationChart() {
             wrapperStyle={{ paddingBottom: "10px" }}
           />
 
+          {/* Display bars based on selected data */}
           {selectedData === "both" ? (
             <>
               <Bar
@@ -231,9 +246,11 @@ export default function HospitalisationChart() {
           )}
         </BarChart>
       </ResponsiveContainer>
+
+      {/* Description of the displayed data */}
       <p className="text-gray-700 mt-4">{getDescription()}</p>
 
-      {/* CSV Download Button */}
+      {/* Button to download data as CSV */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
         <button
           onClick={() => downloadCSV(filteredData, "Hospitalisation_Data")}
@@ -243,7 +260,7 @@ export default function HospitalisationChart() {
         </button>
       </div>
 
-      {/* Email Subscription Section */}
+      {/* Subscription section for updates */}
       <div className="mt-4">
         <h4 className="text-lg font-semibold">Get Notified of Updates</h4>
         <input
@@ -259,6 +276,7 @@ export default function HospitalisationChart() {
         >
           Subscribe
         </button>
+        {/* Display confirmation message if subscribed */}
         {subscribed && <p className="text-green-600 mt-2">You are subscribed!</p>}
       </div>
     </div>
