@@ -19,9 +19,9 @@ export default function CovidOverviewPage() {
           </p>
         </header>
   
-        {/* Content Section */}
+        {/* content section */}
         <section style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {/*Left Image*/}
+          {/*image of healthcare*/}
           <div>
             <img 
               src="/healthcare.webp" 
@@ -30,7 +30,7 @@ export default function CovidOverviewPage() {
             />
           </div>
   
-          {/* Right Text Content */}
+          {/* Text Content */}
           <div>
             <h3 style={{ color: 'blue', fontSize: '18px', fontWeight: 'bold' }}>
               Understanding the Origin
@@ -43,11 +43,6 @@ export default function CovidOverviewPage() {
             </p>
           </div>
         </section>
-  
-        {/* Footer
-        <footer style={{ marginTop: '40px', textAlign: 'center', color: '#999', fontSize: '14px' }}>
-          © 2025 COVID-19 Info Hub. All rights reserved.
-        </footer> */}
       </div>
     );
   } 

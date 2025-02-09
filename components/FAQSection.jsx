@@ -75,6 +75,61 @@ export default function FAQSection() {
           </p>
         )}
       </div>
+      {/* Question 3 */}
+      <div style={{ borderBottom: '1px solid #ccc', padding: '10px 0' }}>
+        <button 
+          onClick={() => toggleQuestion(3)} 
+          style={{ 
+            width: '100%', 
+            backgroundColor: 'white', 
+            border: 'none', 
+            textAlign: 'left', 
+            fontSize: '18px', 
+            cursor: 'pointer', 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'stretch'
+          }}
+        >
+          When is a person infectious?
+          <span style={{ transform: openQuestion === 3 ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }}>
+            {'\u25BC'} {/* Downward arrow */}
+          </span>
+        </button>
+        {openQuestion === 3 && (
+          <p style={{ marginTop: '10px', fontSize: '16px', textAlign: 'left', alignItems: 'stretch'}}>
+            People usually become infectious around 48 hours before the symptoms show, but are more infectious when experiencing symptoms, even if the symptoms are mild and non-specific.
+          </p>
+        )}
+      </div>
+      {/* Question 4 */}
+      <div style={{ borderBottom: '1px solid #ccc', padding: '10px 0' }}>
+        <button 
+          onClick={() => toggleQuestion(4)} 
+          style={{ 
+            width: '100%', 
+            backgroundColor: 'white', 
+            border: 'none', 
+            textAlign: 'left', 
+            fontSize: '18px', 
+            cursor: 'pointer', 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'stretch'
+          }}
+        >
+          What precautions should I take for my family if we travel?
+          <span style={{ transform: openQuestion === 4 ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }}>
+            {'\u25BC'} {/* Downward arrow */}
+          </span>
+        </button>
+        {openQuestion === 4 && (
+          <p style={{ marginTop: '10px', fontSize: '16px', textAlign: 'left', alignItems: 'stretch'}}>
+            If you are planning to travel you should always follow local and national guidance on whether it is advisable to travel.
+            Follow the same protection measures that you would at home during travel.
+          </p>
+        )}
+      </div>
     </div>
   );
   }
