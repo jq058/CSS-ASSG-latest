@@ -1,3 +1,8 @@
+/*  
+ * Name: Lau Jia Qi  
+ * Student ID: S10267822A
+ * Implemented: Full development of the page, including layout, design, and functionality.  
+ */
 import { useEffect, useState, memo } from "react";
 import dynamic from "next/dynamic";
 import { ClockLoader } from "react-spinners"; // Import ClockLoader

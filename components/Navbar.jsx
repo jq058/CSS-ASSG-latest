@@ -1,3 +1,8 @@
+/*  
+ * Name: Lau Jia Qi   
+ * Student ID: S10267822A 
+ * Implemented: Full development of the Navbar, including layout, design, and functionality.  
+ */
 import Link from 'next/link';
 import styles from '../styles/Navbar.module.css'; // Import Navbar styles
 

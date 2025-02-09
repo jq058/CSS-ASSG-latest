@@ -1,5 +1,9 @@
+/*  
+ * Name: Lau Jia Qi  
+ * Student ID: S10267822A 
+ * Implemented: Full development of the page, including layout, design, and functionality.  
+ */
 // components/Home.jsx
-
 import Link from 'next/link';
 import styles from '../styles/Home.module.css'; // Import Home Page Styles
 
