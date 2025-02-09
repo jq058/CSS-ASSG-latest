@@ -5,27 +5,27 @@ import Image from 'next/image';
 
 const precautionsData = [
   {
-    image: '/public/facemask.jpg',
+    image: '/facemask.jpg',
     title: 'Wear a Mask',
     description: 'Always wear a mask in crowded places to reduce the spread of COVID-19.',
   },
   {
-    image: '/public/socialdistance.jpg',
+    image: '/socialdistance.jpg',
     title: 'Maintain Social Distance',
     description: 'Keep at least 6 feet of distance from others in public spaces.',
   },
   {
-    image: '/public/handwash.avif',
+    image: '/handwash.avif',
     title: 'Wash Your Hands',
     description: 'Wash your hands with soap and water for at least 20 seconds.',
   },
   {
-    image: '/public/vaccination.webp',
+    image: '/vaccination.webp',
     title: 'Get Vaccinated',
     description: 'Ensure you are vaccinated and receive booster doses as needed.',
   },
   {
-    image:'/public/crowded-place.jpg',
+    image:'/crowded-place.jpg',
     title: 'Avoid Crowded Places',
     description: 'Avoid large gatherings, especially in poorly-ventilated spaces',
   }
