@@ -3,7 +3,7 @@
 export default function CovidOverviewPage() {
     return (
       <div style={{ backgroundColor: 'white', padding: '20px', minHeight: '100vh' }}>
-        {/* Header Section */}
+        {/* header section */}
         <header style={{ textAlign: 'center', marginBottom: '40px' }}>
           <h3 style={{ color: 'blue', fontSize: '18px', fontWeight: 'bold' }}>
             Covid-19 Overview
@@ -18,9 +18,9 @@ export default function CovidOverviewPage() {
           </p>
         </header>
   
-        {/* Content Section */}
+        {/* content section */}
         <section style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {/*Left Image*/}
+          {/*image*/}
           <div>
             <img 
               src="/images/map2.png" 
@@ -29,7 +29,7 @@ export default function CovidOverviewPage() {
             />
           </div>
   
-          {/* Right Text Content */}
+          {/* right text*/}
           <div>
             <h3 style={{ color: 'blue', fontSize: '18px', fontWeight: 'bold' }}>
               Understanding the Origin

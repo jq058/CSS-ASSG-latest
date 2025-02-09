@@ -12,7 +12,7 @@ export default function FAQSection() {
   };
 
   return (
-    <div style={{ marginTop: '40px', maxWidth: '600px', marginLeft: '0'}}>
+    <div style={{ marginTop: '40px', maxWidth: '100%', marginLeft: '0', alignItems: 'stretch'}}>
       <h2 style={{ textAlign: 'left', fontSize: '24px', fontWeight: 'bold', marginBottom: '20px' }}>Frequently Asked Questions</h2>
   
       {/* Question 1 */}
@@ -71,6 +71,33 @@ export default function FAQSection() {
             Some people that is infected with the virus will experience mild respiratory illnesses and most will recover without needing special treatment. 
             However, Covid-19 can sometimes be a severe disease that could cause serious respiratory inefficiency requiring intensive care and sometimes leads to death.
             People with weaker immune systems like the elderly or those with underlying medical conditions are more likely to develop serious illness from the virus.
+          </p>
+        )}
+      </div>
+      {/* Question 3 */}
+      <div style={{ borderBottom: '1px solid #ccc', padding: '10px 0' }}>
+        <button 
+          onClick={() => toggleQuestion(3)} 
+          style={{ 
+            width: '100%', 
+            backgroundColor: 'white', 
+            border: 'none', 
+            textAlign: 'left', 
+            fontSize: '18px', 
+            cursor: 'pointer', 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center'
+          }}
+        >
+          When is a person infectious?
+          <span style={{ transform: openQuestion === 3 ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }}>
+            {'\u25BC'} {/* Downward arrow */}
+          </span>
+        </button>
+        {openQuestion === 3 && (
+          <p style={{ marginTop: '10px', fontSize: '16px', textAlign: 'left', alignItems: 'stretch'}}>
+            People usually become infectious around 48 hours before the symptoms show, but are more infectious when experiencing symptoms, even if the symptoms are mild and non-specific.
           </p>
         )}
       </div>

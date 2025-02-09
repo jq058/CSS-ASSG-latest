@@ -30,11 +30,26 @@ const variantsData = [
   }
 ];
 
+const linkStyle = {
+  color: '#007bff',
+  textDecoration: 'none',
+  fontSize: '18px',
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: '10px',
+  transition: 'color 0.3s'
+};
 export default function TableOfContentsPage() {
   return (
     <div style={{ display: 'flex', padding: '20px' }}>
-      
-    {/* table of contents on the left */}
+     {/* Left Sidebar Container */}
+  <div style={{ 
+    display: 'flex', 
+    flexDirection: 'column',  // Stack TOC and Resources vertically
+    maxWidth: '300px', 
+    marginRight: '20px'  // Space between sidebar and main content
+  }}> 
+{/* table of contents on the left */}
 <div style={{
   backgroundColor: '#f9f9f9',
   padding: '20px',
@@ -112,9 +127,16 @@ export default function TableOfContentsPage() {
     <ChevronRight size={18} style={{ marginRight: '8px' }} />
     Frequently Asked Questions (FAQs)
   </a>
+   </div>
+     {/* Credible Resources directly below TOC */}
+     <div style={{ marginTop: 'auto' }}>
+      <h2 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '10px' }}>Credible Resources:</h2>
+      <a href="https://www.who.int" target="_blank" rel="noopener noreferrer" style={linkStyle}>World Health Organization (WHO)</a>
+      <a href="https://www.cdc.gov" target="_blank" rel="noopener noreferrer" style={linkStyle}>Centers for Disease Control (CDC)</a>
+      <a href="https://www.moh.gov.sg" target="_blank" rel="noopener noreferrer" style={linkStyle}>Singapore Ministry of Health (MOH)</a>
+    </div>
 </div>
-
-{/* main content on the right */}
+  {/* main content on the right */}
 <div style={{
   width: '75%',
   padding: '20px',
@@ -203,7 +225,7 @@ export default function TableOfContentsPage() {
   </section>
 
   <div style={{ display: 'flex', justifyContent: 'flex-start', 
-  alignItems: 'flex-start',textAlign: 'left', maxWidth: '600px', margin: '0' }}>
+  alignItems: 'flex-start',textAlign: 'left', maxWidth: '100%', margin: '0' }}>
   <section id="faq">
   <FAQSection />
   </section>
