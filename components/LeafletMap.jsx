@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "leaflet.heat"; // Import Leaflet heatmap functionality
-import geoJson from "C:\\Users\\jqlau\\Downloads\\custom.geo.json"; // Import GeoJSON file
+import geoJson from "custom.geo.json"; // Import GeoJSON file
 import chroma from 'chroma-js';
 
 // Color mapping function based on selected data layer (total, active, or deaths)
