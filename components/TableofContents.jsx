@@ -1,9 +1,10 @@
 "use client";
 //Student Name: Janice Oh Shi Ting Student Number: S10269334
 import PrecautionsCarousel from './PrecautionCarousel';  // import the carousel
-import { ChevronRight } from 'lucide-react';
-import FAQSection from './FAQSection';
+import { ChevronRight } from 'lucide-react';  //import the icon
+import FAQSection from './FAQSection';  //import FAQ
 
+//array to contain the details for variant
 const variantsData = [
   {
     name: 'Alpha Variant (B.1.1.7)',
@@ -36,21 +37,23 @@ export default function TableOfContentsPage() {
     <div style={{ display: 'flex', padding: '20px' }}>
       
     {/* table of contents on the left */}
-<div style={{
-  backgroundColor: '#f9f9f9',
-  padding: '20px',
-  borderRadius: '12px',
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-  maxWidth: '300px',
-  margin: '20px',
-  border: '1px solid #e0e0e0',
-  height: 'fit-content',
-  position: 'sticky',
-  top: '20px',
-  alignSelf: 'flex-start'
-}}>  
+    <div style={{
+      backgroundColor: '#f9f9f9',
+      padding: '20px',
+      borderRadius: '12px',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+      maxWidth: '300px',
+      margin: '20px',
+      border: '1px solid #e0e0e0',
+      height: 'fit-content',
+      position: 'sticky',
+      top: '20px',
+      alignSelf: 'flex-start'
+    }}>  
+    {/* title of table */}
   <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '20px' }}>Table of Contents</h2>
 
+  {/*to make the color of text change when cursor is over the words */}
   <a href="#origin" style={{
     color: '#007bff',
     textDecoration: 'none',
@@ -63,9 +66,12 @@ export default function TableOfContentsPage() {
   onMouseOver={(e) => e.target.style.color = '#0056b3'}
   onMouseOut={(e) => e.target.style.color = '#007bff'}
   >
+    {/*to add arrow beside the content */}
     <ChevronRight size={18} style={{ marginRight: '8px' }} />
     Origin of Coronavirus
   </a>
+
+  {/*to make the color of text change when cursor is over the words */}
   <a href="#covid-strains" style={{
     color: '#007bff',
     textDecoration: 'none',
@@ -82,6 +88,7 @@ export default function TableOfContentsPage() {
     What are the COVID-19 strains?
   </a>
 
+{/*to make the color of text change when cursor is over the words */}
   <a href="#precautions" style={{
     color: '#007bff',
     textDecoration: 'none',
@@ -99,6 +106,7 @@ export default function TableOfContentsPage() {
     What are some precautions that can be taken?
   </a>
 
+{/*to make the color of text change when cursor is over the words */}
   <a href="#faq" style={{
     color: '#007bff',
     textDecoration: 'none',
@@ -120,6 +128,8 @@ export default function TableOfContentsPage() {
   width: '75%',
   padding: '20px',
 }}>
+
+  {/*origin section*/}
   <section id="origin" style={{ marginBottom: '40px'}}>
     <h2>Origin of Coronavirus</h2>
     <p style={{ fontSize: '18px' }}>
@@ -131,53 +141,56 @@ export default function TableOfContentsPage() {
       diseases to occur due to the close proximity of humans and a variety of wild animals.
     </p>
   </section>
+
+  {/*strain section*/}
   <section id="covid-strains" style={{ marginBottom: '40px' }}>
     <h2>What are the COVID-19 strains?</h2>
     <p style={{ fontSize: '18px', marginBottom: '80px'}}> 
       Like any other virus, Covid-19 has undergone significant changes over time, due to various factors like its genetic makeup and environmental exposure. As a virus replicates, small errors can occur in its genetic code.These errors are known as genetic mutation and can accumulate and alter how the virus behaves. <br></br><br>
       </br>Some mutations have little to no effect, while others can cause severe changes to the way it spreads or even how it evades the immune system. Over time, these mutations lead to multiple variants or strains of the Covid-19 virus, each with unique characteristics that influenced the course of the pandemic.
     </p>
-     {/* Cards Layout */}
+
+     {/* cards layout */}
      <div style={{
           display: 'flex',
           justifyContent: 'space-between',
           gap: '20px'
         }}>
      
-          {/* Mapping Over Variants Data */}
+          {/* mapping over variants data */}
           {variantsData.map((variant, index) => (
             <div key={index} style={{
               position: 'relative',
-              backgroundColor: '#f9f9f9',
+              backgroundColor: '#F5F5F5',
               padding: '15px',
               borderRadius: '25px',
-              border: '1px solid #ddd',
+              border: '1px solid #D3D3D3',
               boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)',
               width: '30%',
               textAlign: 'center',
               zIndex: 1
             }}>
-              {/* Variant Name */}
+              {/* variant name */}
               <p style={{ fontSize: '22px', fontWeight: 'bold' }}>{variant.name}</p>
 
-              {/* Variant Details */}
+              {/* variant details */}
               <p><strong>Country of Origin:</strong> {variant.country}</p>
               <p><strong>Infectivity:</strong> {variant.infectivity}</p>
               <p><strong>Symptoms:</strong> {variant.symptoms}</p>
               <p>{variant.info}</p>
               
-              {/* Line */}
+              {/* line */}
               <div style={{
                 position: 'absolute',
                 top: '-8%',
                 left: '0',
                 right: '0',
-                height: '4px',  // Line thickness
-                backgroundColor: 'grey',  // Line color
-                zIndex: 0  // Send the line behind the labels
+                height: '4px',  // line thickness
+                backgroundColor: 'black',  // line color
+                zIndex: 0  // send the line behind the labels
                 }}></div>
 
-              {/* Year Label */}
+              {/* year label */}
               <span style={{
                 position: 'absolute',
                 top: '-50px',
@@ -189,20 +202,22 @@ export default function TableOfContentsPage() {
                 boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
                 fontSize: '20px',
                 color: 'black'
-              }}>{variant.year}</span>
+              }}><strong>{variant.year}</strong></span>
             </div>
           ))}
         </div>
         
-        {/* Add extra space below the year labels */}
+        {/* add extra space below the year labels */}
         <div style={{ height: '60px' }}></div>
       </section>
 
+  {/*precautions section */}
   <section id="precautions" style={{ marginBottom: '40px' }}>
     <h2>What are some precautions that can be taken?</h2>
     <PrecautionsCarousel></PrecautionsCarousel>
   </section>
 
+  {/*faq section */}
   <div style={{ display: 'flex', justifyContent: 'flex-start', 
   alignItems: 'flex-start',textAlign: 'left', maxWidth: '600px', margin: '0' }}>
   <section id="faq">
