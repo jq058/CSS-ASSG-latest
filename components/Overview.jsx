@@ -23,7 +23,7 @@ export default function CovidOverviewPage() {
           {/*Left Image*/}
           <div>
             <img 
-              src="/images/map2.png" 
+              src="/map2.png" 
               alt="Global Impact" 
               style={{ borderRadius: '12px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', width: '100%' }}
             />
