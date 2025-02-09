@@ -169,13 +169,14 @@ export default function TableOfContentsPage() {
           {variantsData.map((variant, index) => (
             <div key={index} style={{
               position: 'relative',
-              backgroundColor: '#fff',
-              padding: '15px',
-              borderRadius: '10px',
+              backgroundColor: '#F0F8FF',
+              padding: '20px',
+              borderRadius: '25px',
               border: '1px solid #ddd',
-              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+              boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)',
               width: '30%',
               textAlign: 'center',
+              transition: 'transform 0.3s ease',
               zIndex: 1
             }}>
               {/* Variant Name */}
@@ -190,26 +191,27 @@ export default function TableOfContentsPage() {
               {/* Line */}
               <div style={{
                 position: 'absolute',
-                top: '-8%',
+                top: '-45px',
                 left: '0',
                 right: '0',
                 height: '4px',  // Line thickness
-                backgroundColor: 'black',  // Line color
-                zIndex: 0  // Send the line behind the labels
+                backgroundColor: 'grey',  // Line color
+                zIndex: 1  // Send the line behind the labels
                 }}></div>
 
               {/* Year Label */}
               <span style={{
                 position: 'absolute',
-                top: '-50px',
+                top: '-60px',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                backgroundColor: '#fff',
-                padding: '2px 8px',
-                borderRadius: '5px',
+                backgroundColor: '#F0F8FF',
+                padding: '5px 12px',
+                borderRadius: '10px',
                 boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
                 fontSize: '20px',
-                color: '#555'
+                color: 'black',
+                zIndex: 2
               }}>{variant.year}</span>
             </div>
           ))}

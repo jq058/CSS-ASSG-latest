@@ -42,11 +42,6 @@ export default function CovidOverviewPage() {
             </p>
           </div>
         </section>
-  
-        {/* Footer
-        <footer style={{ marginTop: '40px', textAlign: 'center', color: '#999', fontSize: '14px' }}>
-          © 2025 COVID-19 Info Hub. All rights reserved.
-        </footer> */}
       </div>
     );
   } 
