@@ -6,19 +6,19 @@ const Legend = () => {
             <p><b>COVID-19 Cases by Country</b></p>
             <div className={styles.legendItem}>
                 <div className={styles.colorBox} style={{ backgroundColor: 'green' }}></div>
-                <span>0–500 Cases</span>
+                <span> less than 5000 Cases</span>
             </div>
             <div className={styles.legendItem}>
                 <div className={styles.colorBox} style={{ backgroundColor: 'yellow' }}></div>
-                <span>500–5000 Cases</span>
-            </div>
-            <div className={styles.legendItem}>
-                <div className={styles.colorBox} style={{ backgroundColor: 'orange' }}></div>
                 <span>5000–50000 Cases</span>
             </div>
             <div className={styles.legendItem}>
+                <div className={styles.colorBox} style={{ backgroundColor: 'orange' }}></div>
+                <span>50000–1000000 Cases</span>
+            </div>
+            <div className={styles.legendItem}>
                 <div className={styles.colorBox} style={{ backgroundColor: 'red' }}></div>
-                <span>50000+ Cases</span>
+                <span>1000000+ Cases</span>
             </div>
             <div className={styles.legendItem}>
                 <div className={styles.colorBox} style={{ backgroundColor: 'gray' }}></div>
