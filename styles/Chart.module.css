@@ -1,8 +1,8 @@
-/* styles/Chart.module.css */
+/*styles/Chart.module.css*/
 
 .container {
-  padding: 20px 80px;
+  padding-left: 40px;
+  padding-right: 40px;
   padding-top: 15px;
-  background-color: #ECF0F1;
-  min-height: 100vh;
+  background-color: var(--background-color);
 }
