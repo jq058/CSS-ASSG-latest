@@ -1,4 +1,4 @@
-//May Cherry Aung, S10269732
+//CovidLineChart.jsx //May Cherry Aung, S10269732
 
 "use client";
 
@@ -71,9 +71,9 @@ export default function VaccinationLineChart() {
   return (
     <div className="p-4">
       <div className="max-w-screen-lg mx-auto">
-        <h2 className="text-xl font-bold mb-4">
+        <h1 className="text-xl font-bold mb-4">
           Progress of COVID-19 vaccination in Singapore
-        </h2>
+        </h1>
         {/* Dropdown to choose which line(s) to display */}
         <div className="mb-4">
           <label htmlFor="line-select" className="mr-2">

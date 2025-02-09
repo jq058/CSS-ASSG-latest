@@ -1,4 +1,4 @@
-// pages/chart.jsx // May Cherry Aung, S10269732
+// pages/maychart.jsx // May Cherry Aung, S10269732
 import CovidLineChart from "../components/CovidLineChart";
 import CovidHospitalChart from "../components/CovidHospitalChart";
 import styles from "../styles/Chart.module.css";
